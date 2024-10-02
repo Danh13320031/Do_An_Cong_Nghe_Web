@@ -1,11 +1,12 @@
 import express from 'express';
 import reload from 'reload';
 import environmentVariable from './configs/env.config.js';
+import templateEg from './configs/templateEg.config.js';
+import router from './routes/index.route.js';
 const app = express();
 
-app.get('/', (request, response, next) => {
-  response.send('<h1> Hello World! </h1>');
-});
+templateEg(app);
+router(app);
 
 reload(app)
   .then(() => {
